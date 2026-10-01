@@ -222,26 +222,45 @@ body{font-size:14px!important}
 @media(max-width:650px){body{font-size:13px!important}.logo{font-size:15px!important}.steam-btn,.steam{font-size:12px!important;padding:10px 13px!important}.hero h1{font-size:22px!important}.hero p{font-size:12px!important}.terms-card h1,.article h1{font-size:20px!important}.terms-card h2,.article h2{font-size:14px!important}.terms-card p,.article p,.article li{font-size:12px!important}.gmod-head h1,.gmod-hero h1{font-size:24px!important}}
 </style>
 
-<style id="final-background-and-type-fix">
-/* Stable background: no fixed background repaint / no filter, so scrolling stays smooth. */
-html{background:#000!important;}
-body{background:#000!important;position:relative;isolation:isolate;font-size:15px!important;}
+
+<style id="background-1to1-fix">
+/* Match checksteam.ru: the supplied smoke image is a shallow top background strip.
+   Do not use cover/fixed/filter; that changes the composition and causes repainting. */
+html,body{background:#000!important;}
+body{position:relative!important;isolation:isolate!important;overflow-x:hidden!important;}
 body::before{
-  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background-image:linear-gradient(to bottom,rgba(0,0,0,.90) 0%,rgba(0,0,0,.78) 42%,rgba(0,0,0,.42) 72%,rgba(0,0,0,.12) 100%),url("assets/GHfire1.gif");
-  background-position:center bottom;background-repeat:no-repeat;background-size:cover;background-attachment:scroll;
+  content:"";
+  position:absolute!important;
+  z-index:0!important;
+  top:0!important;
+  left:0!important;
+  width:100%!important;
+  height:315px!important;
+  pointer-events:none!important;
+  background-image:url("assets/GHfire1.gif")!important;
+  background-repeat:no-repeat!important;
+  background-position:top center!important;
+  background-size:100% auto!important;
+  background-attachment:scroll!important;
+  opacity:1!important;
+  filter:none!important;
 }
 body::after{display:none!important;}
-.header{position:relative;z-index:2;}
-.hero,.page,.gmod-main,.footer,.article,.terms-card{position:relative;z-index:1;}
+.header,.hero,.page,.gmod-main,.gmod-hero,.gmod-warning,.article,.terms-card,.footer,.container,.narrow,.wrap{
+  position:relative;
+  z-index:1;
+}
+body{font-size:15px!important;}
 .logo{font-size:19px!important;}
 .steam-btn,.steam{font-size:14px!important;}
+.hero h1{font-size:25px!important;}
+.hero p{font-size:13px!important;}
 .footer{font-size:12px!important;}
 .article p,.article li,.terms-card p,.terms-card li{font-size:14px!important;line-height:1.85!important;}
 .article h1,.terms-card h1{font-size:24px!important;}
 .article h2,.terms-card h2{font-size:16px!important;}
-.gmod-hero h1,.gmod-head h1{font-size:29px!important;}
-.gmod-hero p,.gmod-head p{font-size:13px!important;}
+.gmod-head h1,.gmod-hero h1{font-size:29px!important;}
+.gmod-head p,.gmod-hero p{font-size:13px!important;}
 .gmod-warning li,.warn li{font-size:14px!important;line-height:1.75!important;}
 .gmod-note,.note{font-size:13px!important;line-height:1.75!important;}
 .gmod-section-title,.screens-title,.section-title{font-size:14px!important;}
@@ -249,9 +268,14 @@ body::after{display:none!important;}
 .gmod-card p,.feature p{font-size:13px!important;line-height:1.7!important;}
 .gmod-shot figcaption,.shot figcaption{font-size:12px!important;}
 @media(max-width:650px){
- body{font-size:14px!important}.logo{font-size:16px!important}.steam-btn,.steam{font-size:13px!important}
- .article p,.article li,.terms-card p,.terms-card li{font-size:13px!important}
- .gmod-warning li,.warn li{font-size:13px!important}
+  body{font-size:14px!important;}
+  body::before{height:230px!important;}
+  .logo{font-size:16px!important;}
+  .steam-btn,.steam{font-size:13px!important;}
+  .hero h1{font-size:22px!important;}
+  .hero p{font-size:12px!important;}
+  .article p,.article li,.terms-card p,.terms-card li{font-size:13px!important;}
+  .gmod-warning li,.warn li{font-size:13px!important;}
 }
 </style>
 </head>

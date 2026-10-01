@@ -41,13 +41,6 @@ a{text-decoration:none;color:inherit}.wrap{width:980px;max-width:calc(100% - 34p
 @media(max-width:1000px){.wrap{max-width:calc(100% - 28px)}}
 @media(max-width:650px){.header{height:54px}.logo{font-size:12px}.steam{padding:8px;font-size:9px}.article{padding:20px}.screen-grid{grid-template-columns:1fr}.center{min-height:260px}}
 
-body:after{content:"";position:fixed;z-index:-1;left:-10%;right:-10%;bottom:-70px;height:430px;pointer-events:none;opacity:.18;
-background:
-radial-gradient(ellipse at 8% 80%,transparent 0 16%,rgba(120,0,45,.22) 17%,transparent 30%),
-radial-gradient(ellipse at 48% 100%,transparent 0 19%,rgba(120,0,45,.20) 20%,transparent 35%),
-radial-gradient(ellipse at 91% 80%,transparent 0 15%,rgba(120,0,45,.18) 16%,transparent 31%);
-filter:blur(18px)}
-
 
 /* === LARGE-TEXT OVERRIDE ===
    Increased to match the visual scale of the current reference pages. */
