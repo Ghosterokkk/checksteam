@@ -41,6 +41,14 @@ a{text-decoration:none;color:inherit}.wrap{width:980px;max-width:calc(100% - 34p
 @media(max-width:1000px){.wrap{max-width:calc(100% - 28px)}}
 @media(max-width:650px){.header{height:54px}.logo{font-size:12px}.steam{padding:8px;font-size:9px}.article{padding:20px}.screen-grid{grid-template-columns:1fr}.center{min-height:260px}}
 
+body:after{content:"";position:fixed;z-index:-1;left:-10%;right:-10%;bottom:-70px;height:430px;pointer-events:none;opacity:.18;
+background:
+radial-gradient(ellipse at 8% 80%,transparent 0 16%,rgba(120,0,45,.22) 17%,transparent 30%),
+radial-gradient(ellipse at 48% 100%,transparent 0 19%,rgba(120,0,45,.20) 20%,transparent 35%),
+radial-gradient(ellipse at 91% 80%,transparent 0 15%,rgba(120,0,45,.18) 16%,transparent 31%);
+filter:blur(18px)}
+
+
 /* === LARGE-TEXT OVERRIDE ===
    Increased to match the visual scale of the current reference pages. */
 body{font-size:14px}
@@ -92,22 +100,4 @@ body{font-size:14px}
   .hero p{font-size:11px}.center{min-height:300px}
   .article{padding:24px 20px 34px}.article h1{font-size:20px}
   .article h2{font-size:14px}.article p,.article li{font-size:12px}
-}
-
-/* Animated fire background supplied by the user */
-body:before{
-  content:"";
-  position:fixed;
-  z-index:-1;
-  left:0;
-  right:0;
-  bottom:0;
-  height:48vh;
-  min-height:300px;
-  pointer-events:none;
-  background:
-    linear-gradient(to top, rgba(0,0,0,.10) 0%, rgba(0,0,0,.58) 72%, rgba(0,0,0,1) 100%),
-    url("./gh_fire.gif") center bottom / cover no-repeat;
-  opacity:.78;
-  filter:saturate(.72) brightness(.72);
 }
