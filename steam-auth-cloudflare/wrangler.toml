@@ -1,5 +1,0 @@
-name = "checksteam-steam-auth"
-main = "worker.js"
-compatibility_date = "2026-10-02"
-
-# After deployment, put the Worker URL in ../assets/config.js
