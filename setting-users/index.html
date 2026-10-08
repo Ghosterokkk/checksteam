@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>STEAM CHECKER — Настройки пользователей</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+:root{--red:#ed102d;--line:#202020;--muted:#666;--panel:rgba(7,7,7,.94)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#000;color:#ddd}body{font-family:"Roboto Mono",monospace;position:relative;isolation:isolate} .site-bg{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;pointer-events:none;opacity:.18;display:block}body::after{display:none}a{text-decoration:none;color:inherit}
+.cs-wrap{width:1120px;max-width:calc(100% - 42px);margin:0 auto;position:relative;z-index:2}.cs-header{height:82px;border-bottom:1px solid #1d1d1d;display:flex;align-items:center;justify-content:space-between}.cs-logo{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;letter-spacing:2px}.cs-logo img{width:29px;height:29px;object-fit:contain}.cs-logo span{color:var(--red)}
+.cs-user{display:flex;align-items:center;gap:8px;margin-left:auto}.cs-avatar{width:40px;height:42px;border-radius:50%;object-fit:cover;background:#0b0b0b;border:1px solid #292929}.cs-usertext{display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-width:100px}.cs-usertext b{font-size:13px;color:#eee;line-height:1.1}.cs-usertext span{font-size:10px;font-weight:800;line-height:1.1}.logout{border:1px solid #2c2c2c;background:#090909;color:#aaa;border-radius:6px;padding:9px 14px;font:inherit;font-size:11px;cursor:pointer;transition:.15s}.logout:hover{color:#fff;border-color:var(--red);background:#100306}.login{border:1px solid #315a7c;background:linear-gradient(#244b66,#193a51);color:#e7eef3;border-radius:6px;padding:11px 17px;font-size:12px;font-weight:700}
+.card{border:1px solid #232323;background:var(--panel);border-radius:10px;margin-top:18px;padding:24px 26px}.profile-top{display:flex;align-items:center;gap:17px}.profile-avatar{width:76px;height:76px;border-radius:50%;object-fit:cover;border:1px solid #303030;background:#0b0b0b}.profile-name{font-size:23px;font-weight:800;color:#eee}.profile-role{margin-top:6px;font-size:13px;font-weight:800}.profile-id{margin-top:6px;color:#555;font-size:11px}.section-title{margin:24px 0 12px;color:#777;font-size:11px;letter-spacing:2px}.union-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.info{border:1px solid #222;background:#080808;border-radius:7px;padding:15px 16px;min-height:78px}.info small{display:block;color:#555;font-size:10px;margin-bottom:8px}.info b{font-size:13px;color:#ddd}.union-link{display:inline-block;margin-top:13px;color:#d9152d;font-size:11px}.union-note{color:#555;font-size:10px;margin-top:10px}
+.management{display:none}.management h2{font-size:20px;margin:0;color:#eee}.sub{font-size:11px;color:#666;margin:7px 0 20px;line-height:1.6}.hierarchy{display:grid;grid-template-columns:repeat(5,1fr);gap:11px}.hier{border:1px solid #222;background:#080808;border-radius:8px;padding:15px;min-height:100px}.hier .n{font-size:10px;color:#555}.hier b{display:block;font-size:13px;margin:9px 0 6px}.hier span{font-size:10px;color:#555}.form-grid{display:grid;grid-template-columns:220px 190px 190px 170px;gap:12px}.form-grid input,.form-grid select{width:100%;min-height:48px;padding:13px 14px;background:#050505;border:1px solid #2a2a2a;border-radius:6px;color:#ddd;font:inherit;font-size:12px}.save{min-height:48px;border:1px solid #681022;background:#130306;color:#ff2942;border-radius:6px;font:inherit;font-size:12px;font-weight:800;cursor:pointer}.save:hover{border-color:#ff1836;background:#180407}.status{display:block;margin-top:10px;font-size:11px;color:#666}.preview{display:none;margin-top:15px;border:1px solid #222;border-radius:8px;background:#080808;padding:13px 15px;align-items:center;gap:13px}.preview img{width:48px;height:48px;border-radius:50%;object-fit:cover}.preview b{font-size:13px;color:#eee}.preview small{display:block;margin-top:4px;color:#555;font-size:10px}
+.users{display:grid;gap:11px}.urow{display:grid;grid-template-columns:minmax(330px,1.6fr) 190px 190px minmax(330px,1.2fr);align-items:center;gap:20px;border:1px solid #222;background:#080808;border-radius:8px;padding:16px 18px;min-height:94px}.umain{display:flex;align-items:center;gap:14px;min-width:0}.uavatar{width:58px;height:58px;border-radius:50%;object-fit:cover;background:#111;border:1px solid #303030}.uname b{display:block;color:#eee;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.uname small{display:block;color:#555;font-size:10px;margin-top:6px}.field small{display:block;color:#555;font-size:10px;margin-bottom:7px}.field b{font-size:13px}.sid{text-align:right}.actions{display:flex;justify-content:flex-end;gap:9px;margin-top:10px}.btn{border:1px solid #2c2c2c;background:#090909;color:#bbb;border-radius:6px;padding:10px 14px;font:inherit;font-size:11px;cursor:pointer}.btn:hover{border-color:#666;color:#fff}.delete{border-color:#55101b;color:#ff5267;background:#100306}.delete:hover{border-color:#ff1836}.no{color:#444;font-size:11px}.logs{display:none}.logs table{width:100%;border-collapse:collapse}.logs th,.logs td{border-top:1px solid #222;padding:13px 9px;text-align:left;font-size:11px}.logs th{color:#555;font-weight:500}.footer{padding:38px 0 60px;text-align:center;color:#3b3b3b;font-size:11px}.footer a{color:#d9152d;margin:0 8px}.footer .sep{color:#303030}
+@media(max-width:1050px){.union-grid{grid-template-columns:repeat(3,1fr)}.hierarchy{grid-template-columns:repeat(3,1fr)}.form-grid{grid-template-columns:1fr 1fr}.urow{grid-template-columns:1fr 1fr}.sid{text-align:left}.actions{justify-content:flex-start}}
+@media(max-width:650px){.cs-wrap{max-width:calc(100% - 20px)}.cs-header{height:68px}.cs-logo{font-size:15px;letter-spacing:1.8px}.cs-logo img{width:25px;height:25px}.cs-usertext{display:none}.union-grid,.hierarchy,.form-grid,.urow{grid-template-columns:1fr}.card{padding:19px}.profile-avatar{width:62px;height:62px}.profile-name{font-size:19px}.sid{text-align:left}.actions{justify-content:flex-start}}
+
+/* UI polish v4 */
+.cs-wrap{width:1060px;max-width:calc(100% - 36px)}
+.cs-header{height:76px}
+.cs-user{gap:8px}
+.cs-avatar{width:34px;height:34px;flex:none}
+.cs-usertext{min-width:0;gap:2px}
+.cs-usertext b{font-size:12px}.cs-usertext span{font-size:9px}
+.logout{padding:8px 12px;font-size:10px}
+.profile-card-clean{padding:20px 22px}.profile-top{gap:14px}.profile-copy{min-width:0}.profile-avatar{width:58px;height:58px;flex:none}.profile-name{font-size:20px}.profile-role{font-size:11px}.profile-id{font-size:10px}
+.profile-actions{margin-left:auto;display:flex;align-items:center;gap:9px;flex-wrap:wrap;justify-content:flex-end}.profile-manage{border:1px solid #5b0b1b;background:#130306;color:#ff2442;border-radius:6px;padding:10px 14px;font-size:10px;font-weight:800;white-space:nowrap}.profile-manage:hover{border-color:#ff1836;box-shadow:0 0 18px rgba(255,24,54,.18)}.profile-settings{color:#d9d9d9;border-color:#2d2d2d;background:#090909}.profile-settings:hover{color:#fff;border-color:#666;box-shadow:0 0 18px rgba(255,255,255,.07)}
+.management h2{font-size:21px}.hierarchy{grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.hier{min-width:0;cursor:pointer;transition:transform .15s,border-color .15s,box-shadow .15s}.hier:hover{transform:translateY(-2px);border-color:#555}.hier[aria-disabled="true"]{cursor:default;opacity:.5}.hier b{text-shadow:0 0 7px currentColor,0 0 18px color-mix(in srgb,currentColor 35%,transparent)}
+.form-grid{grid-template-columns:220px 190px 190px 170px;gap:12px}
+.urow{grid-template-columns:minmax(240px,1.7fr) minmax(135px,.8fr) minmax(135px,.8fr) minmax(240px,1.25fr);gap:16px;min-width:0;overflow:hidden}.urow>*{min-width:0}.umain{min-width:0}.uname{min-width:0}.sid{min-width:0;overflow:hidden}.sid b{display:block;max-width:100%;overflow-wrap:anywhere;word-break:break-word}.actions{flex-wrap:wrap}
+.role-admin{color:#ff1836!important;text-shadow:0 0 7px #ff1836,0 0 18px rgba(255,24,54,.5)}.role-senior{color:#4d8dff!important;text-shadow:0 0 7px #4d8dff,0 0 18px rgba(77,141,255,.45)}.role-assistant{color:#c05cff!important;text-shadow:0 0 7px #c05cff,0 0 18px rgba(192,92,255,.45)}.role-sudo{color:#22e6ff!important;text-shadow:0 0 7px #22e6ff,0 0 18px rgba(34,230,255,.45)}.role-special{color:#e8edf5!important;text-shadow:0 0 7px #e8edf5,0 0 18px rgba(232,237,245,.35)}.role-owner{background:linear-gradient(90deg,#7b0014,#ff1836,#8d0018,#ff1836,#7b0014);background-size:250% auto;-webkit-background-clip:text;background-clip:text;color:transparent!important;animation:ownerShimmer 3s linear infinite;text-shadow:0 0 9px rgba(255,0,35,.35)}
+@keyframes ownerShimmer{0%{background-position:0% center}100%{background-position:250% center}}
+@media(max-width:1100px){.urow{grid-template-columns:minmax(210px,1.5fr) minmax(130px,.8fr) minmax(130px,.8fr) minmax(220px,1.1fr)}}
+@media(max-width:900px){.hierarchy{grid-template-columns:repeat(3,minmax(0,1fr))}.urow{grid-template-columns:1fr 1fr}.sid{text-align:left}.actions{justify-content:flex-start}.form-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.cs-wrap{max-width:calc(100% - 20px)}.cs-usertext{display:flex}.cs-avatar{width:32px;height:32px}.profile-top{align-items:center}.profile-manage{font-size:9px;padding:8px}.profile-actions{gap:6px}.hierarchy,.form-grid,.urow{grid-template-columns:1fr}}
+
+.role-settings{display:none}.role-settings-grid{display:grid;gap:10px}.role-setting-row{display:grid;grid-template-columns:1.25fr 1.2fr 120px 180px 120px;gap:10px;align-items:center;border:1px solid #222;background:#070707;border-radius:8px;padding:12px}.role-setting-row .key{font-weight:800}.role-setting-row input{width:100%;min-height:42px;padding:10px 12px;background:#050505;border:1px solid #292929;border-radius:6px;color:#ddd;font:inherit;font-size:11px}.role-setting-row input[type=color]{padding:4px;min-height:42px;cursor:pointer}.role-setting-row .role-preview{font-weight:800;font-size:12px}.role-id-hint{color:#555;font-size:9px}.settings-actions{display:flex;align-items:center;gap:10px;margin-top:12px}.settings-save{min-height:44px;border:1px solid #6b0c1d;background:#140306;color:#ff2942;border-radius:6px;padding:0 18px;font:inherit;font-size:11px;font-weight:800;cursor:pointer}.settings-save:hover{border-color:#ff1836;box-shadow:0 0 18px rgba(255,24,54,.16)}
+@media(max-width:900px){.role-setting-row{grid-template-columns:1fr 1fr 90px 1fr 100px}.urow{grid-template-columns:1fr 1fr}.sid{text-align:left}.actions{justify-content:flex-start}}
+@media(max-width:650px){.role-setting-row{grid-template-columns:1fr}.hierarchy{grid-template-columns:1fr 1fr}.form-grid{grid-template-columns:1fr}.urow{grid-template-columns:1fr}.sid{text-align:left}}
+
+.pretty-select{position:relative;width:100%;font-size:12px}.pretty-select-trigger{width:100%;min-height:48px;padding:13px 42px 13px 14px;background:#050505;border:1px solid #2a2a2a;border-radius:6px;color:var(--select-color,#ddd);text-shadow:0 0 7px color-mix(in srgb,var(--select-color,#ddd) 70%,transparent);font:inherit;font-size:12px;text-align:left;cursor:pointer;position:relative;transition:.15s ease}.pretty-select-trigger::after{content:"⌄";position:absolute;right:14px;top:50%;transform:translateY(-55%);color:#666;font-size:14px}.pretty-select.open .pretty-select-trigger{border-color:var(--select-color,#444);box-shadow:0 0 18px color-mix(in srgb,var(--select-color,#555) 18%,transparent)}.pretty-select-menu{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:20;display:none;padding:5px;background:#070707;border:1px solid #252525;border-radius:7px;box-shadow:0 16px 36px rgba(0,0,0,.65)}.pretty-select.open .pretty-select-menu{display:grid;gap:3px}.pretty-option{width:100%;border:1px solid transparent;background:#090909;color:#aaa;border-radius:5px;padding:10px 12px;text-align:left;font:inherit;font-size:11px;cursor:pointer;transition:.12s ease;text-shadow:0 0 8px currentColor}.pretty-option:hover{border-color:currentColor;background:#100306;transform:translateX(2px)}.pretty-option.selected{border-color:currentColor;background:#100306;box-shadow:inset 0 0 14px rgba(255,255,255,.025),0 0 12px rgba(255,255,255,.04)}.dept-preview{font-weight:800}.settings-link{display:inline-flex;align-items:center;margin-top:16px;border:1px solid #3c0c16;background:#100306;color:#ff2442;border-radius:6px;padding:10px 14px;font-size:11px;font-weight:800;transition:.15s ease}.settings-link:hover{border-color:#ff1836;box-shadow:0 0 18px rgba(255,24,54,.15);transform:translateY(-1px)}.select-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.select-label{display:block;color:#555;font-size:10px;margin:0 0 7px 2px}.field .role-glow,.field .dept-glow{font-weight:800}.department-glow{text-shadow:0 0 7px currentColor,0 0 18px color-mix(in srgb,currentColor 45%,transparent)}@media(max-width:650px){.select-row{grid-template-columns:1fr}}
+.loading-screen{position:fixed;inset:0;z-index:9999;background:#000;display:flex;align-items:center;justify-content:center;opacity:1;visibility:visible;transition:opacity .22s ease,visibility .22s ease}.loading-screen.hidden{opacity:0;visibility:hidden;pointer-events:none}.loading-box{text-align:center;color:#777;font-size:12px;letter-spacing:.4px}.loading-spinner{width:28px;height:28px;margin:0 auto 14px;border:2px solid #252525;border-top-color:#ed102d;border-radius:50%;animation:loadingSpin .8s linear infinite}.loading-box b{display:block;color:#aaa;font-size:13px;margin-bottom:5px}.loading-box span{color:#555;font-size:10px}@keyframes loadingSpin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body><div class="loading-screen" id="loading-screen"><div class="loading-box"><div class="loading-spinner"></div><b>Загрузка страницы</b><span>Подождите пожалуйста!</span></div></div><img class="site-bg" src="https://i.imgur.com/Y334pmB.gif" onerror="this.onerror=null;this.src='../assets/GHfire1_animated.gif';" alt="" aria-hidden="true"><div class="cs-wrap">
+<header class="cs-header"><a class="cs-logo" href="../"><img src="../assets/ghoster-logo-clean.png"><span style="color:#eee">STEAM</span><span>CHECKER</span></a><div class="cs-user"><a class="login" data-auth-login href="#" data-steam>Войти через Steam</a><img class="cs-avatar" data-user-avatar alt=""><div class="cs-usertext" data-auth-user><b data-user-name></b><span data-user-privilege></span></div><button class="logout" data-logout data-auth-user>Выйти</button></div></header>
+<main>
+<section class="card profile-card-clean"><div class="profile-top"><img class="profile-avatar" data-user-avatar alt=""><div class="profile-copy"><div class="profile-name" data-user-name>Гость</div><div class="profile-role" data-user-privilege></div><div class="profile-id">SteamID64: <b data-user-steamid></b></div></div></div></section>
+<section class="card management" id="management"><h2>Настройки пользователей</h2><div class="sub">Выберите роль ниже или используйте форму выдачи. Сервер дополнительно проверяет иерархию и не позволит выдать роль выше своих полномочий.</div><div class="sub">Текущий уровень: <b id="my-role"></b> · SteamID64: <span id="my-id"></span></div><div class="hierarchy" id="hierarchy"></div></section>
+<section class="card management" id="grant"><h2>Выдача / изменение роли</h2><div class="sub">Введите SteamID64. После сохранения Steam автоматически определит ник и аватар пользователя.</div><form id="user-form"><div class="form-grid"><input id="steam_id" inputmode="numeric" maxlength="17" pattern="[0-9]{17}" placeholder="SteamID64" required><div><label class="select-label">Отдел</label><input type="hidden" id="department" value="Staff"><div class="pretty-select" id="department-select"><button class="pretty-select-trigger" type="button">Staff</button><div class="pretty-select-menu"></div></div></div><div><label class="select-label">Привилегия</label><input type="hidden" id="privilege" value=""><div class="pretty-select" id="privilege-select"><button class="pretty-select-trigger" type="button">Привилегия не назначена</button><div class="pretty-select-menu"></div></div></div><button class="save" type="submit">Выдать / сохранить</button></div></form><div class="preview" id="preview"><img id="preview-avatar"><div><b id="preview-name"></b><small id="preview-id"></small></div></div><span id="status" class="status"></span></section><section class="card management" id="users"><h2>Пользователи</h2><div class="sub">Пользователь · привилегия · отдел · SteamID64 и действия.</div><div class="users" id="users-body"></div></section>
+<section class="card logs" id="logs"><h2>Журнал действий</h2><div class="sub">Логи хранятся 48 часов и затем автоматически удаляются.</div><div style="overflow:auto"><table><thead><tr><th>Дата</th><th>Кто</th><th>Кому</th><th>Действие</th><th>Было</th><th>Стало</th></tr></thead><tbody id="logs-body"></tbody></table></div></section>
+</main><footer class="footer">© 2026 STEAM CHECKER <span class="sep">|</span><a href="../agreement/">СОГЛАШЕНИЕ</a><span class="sep">|</span><a href="https://unionteams.ru" target="_blank">UNIONTEAMS GMOD</a><span class="sep">|</span><a href="../download/">СКАЧАТЬ GMOD SCAN</a></footer>
+</div>
+<script src="../assets/config.js"></script><script src="../assets/steam-auth.js"></script>
+<script>
+(function(){
+const API=(window.STEAM_API_BASE||'').replace(/\/$/,''), rank={Administrator:1,'Senior Administrator':2,'Assistant Sudo Curator':3,'Sudo Curator':4,'Special Admin':5};
+const fallbackRoles={Administrator:'#ff1836','Senior Administrator':'#3d7cff','Assistant Sudo Curator':'#a855f7','Sudo Curator':'#22d3ee','Special Admin':'#9ca3af','Владелец':'#ff1836'};
+const fallbackDepartments={Staff:'#ff1836','Без отдела':'#777'}; let me=null,users=[],settings={roles:{},departments:{}};
+function token(){return window.CheckSteamAuth?.getToken?.()||''} function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+async function api(path,opt={}){opt.headers=Object.assign({'Content-Type':'application/json','Authorization':'Bearer '+token()},opt.headers||{});let r=await fetch(API+path,opt),d=await r.json().catch(()=>({}));if(!r.ok)throw Error(d.error||('HTTP_'+r.status));return d}
+function roleCfg(k){return settings.roles[k]||{name:k,color:fallbackRoles[k]||'#aaa',role_id:'role-'+(rank[k]||0)}}
+function deptCfg(k){return settings.departments[k]||{name:k,color:fallbackDepartments[k]||'#777',department_id:k==='Staff'?'dept-staff':'dept-none'}}
+function setStatus(x,err){let e=document.getElementById('status');if(e){e.textContent=x;e.style.color=err?'#ff1836':'#777'}}
+function hideLoading(){clearTimeout(loadingFallback);document.getElementById('loading-screen')?.classList.add('hidden')}
+function closeSelects(except){document.querySelectorAll('.pretty-select.open').forEach(x=>{if(x!==except)x.classList.remove('open')})}
+let departmentSelect=null, privilegeSelect=null;
+function makeSelect(id,items,getLabel,getColor,onChange){
+  const box=document.getElementById(id); if(!box) return null;
+  const trigger=box.querySelector('.pretty-select-trigger');
+  const menu=box.querySelector('.pretty-select-menu');
+  const keyOf=item=>typeof item==='string'?item:(item?.key||'');
+  const find=v=>items.find(item=>keyOf(item)===v);
+  menu.innerHTML=items.map(item=>{
+    const value=keyOf(item), label=getLabel(item), color=getColor(item);
+    return `<button type="button" class="pretty-option" data-value="${esc(value)}" style="color:${esc(color)}">${esc(label)}</button>`;
+  }).join('');
+  const setValue=v=>{
+    const item=find(v) || find('') || items[0];
+    const value=item?keyOf(item):'';
+    const label=item?getLabel(item):'';
+    const color=item?getColor(item):'#777';
+    const hidden=document.getElementById(id.replace('-select',''));
+    if(hidden) hidden.value=value;
+    trigger.textContent=label;
+    box.style.setProperty('--select-color',color);
+    menu.querySelectorAll('.pretty-option').forEach(btn=>btn.classList.toggle('selected',btn.dataset.value===value));
+  };
+  trigger.onclick=ev=>{ev.preventDefault();closeSelects(box);box.classList.toggle('open');};
+  menu.querySelectorAll('.pretty-option').forEach(btn=>btn.onclick=()=>{setValue(btn.dataset.value);box.classList.remove('open');if(onChange)onChange(btn.dataset.value);});
+  return {set:setValue};
+}
+function renderSelects(){
+  const roles=Object.keys(rank).filter(k=>(Number(me?.rank)|| (me?.is_owner?6:0))>rank[k]).map(k=>({key:k,...roleCfg(k)}));
+  const deptKeys=Object.keys(settings.departments||{});
+  const depts=(deptKeys.length?deptKeys:['Staff','Без отдела']).map(k=>({key:k,...deptCfg(k)}));
+  departmentSelect=makeSelect('department-select',depts,item=>item?.name||item?.key||'',item=>item?.color||'#777');
+  privilegeSelect=makeSelect('privilege-select',roles,item=>item?.name||item?.key||'',item=>item?.color||'#aaa');
+  if(departmentSelect) departmentSelect.set(document.getElementById('department').value||'Staff');
+  if(privilegeSelect){const current=document.getElementById('privilege').value||''; if(current) privilegeSelect.set(current); else {document.getElementById('privilege').value=''; const trigger=document.querySelector('#privilege-select .pretty-select-trigger'); if(trigger) trigger.textContent='Привилегия не назначена';}}
+}
+function renderHierarchy(){
+  const r=Number(me?.rank)|| (me?.is_owner?6:0);
+  const keys=['Special Admin','Sudo Curator','Assistant Sudo Curator','Senior Administrator','Administrator'];
+  document.getElementById('hierarchy').innerHTML=keys.map(key=>{const c=roleCfg(key);const allowed=r>rank[key];return `<div class="hier" data-role="${esc(key)}" aria-disabled="${!allowed}"><div class="n">Уровень ${rank[key]} · ID ${esc(c.role_id)}</div><b style="color:${esc(c.color)};text-shadow:0 0 7px ${esc(c.color)},0 0 18px ${esc(c.color)}">${esc(c.name)}</b><span>${allowed?'Можно выдать / снять':'Нет доступа'}</span></div>`}).join('');
+  document.querySelectorAll('.hier[data-role]').forEach(el=>{if(el.getAttribute('aria-disabled')!=='true')el.onclick=()=>{if(privilegeSelect)privilegeSelect.set(el.dataset.role);document.getElementById('grant').scrollIntoView({behavior:'smooth',block:'center'});}});
+}
+function renderUsers(){
+  const w=document.getElementById('users-body');
+  if(!w)return;
+  if(!users.length){w.innerHTML='<div class="no" style="padding:16px 0">Пользователей пока нет.</div>';return;}
+  w.innerHTML=users.map(u=>{
+    const role=u.effective_privilege||'Привилегия не назначена';
+    const rc=role==='Владелец'?'#ff1836':(u.privilege_color||roleCfg(u.privilege||'').color||'#666');
+    const dc=u.department_color||deptCfg(u.department||'Без отдела').color;
+    const rl=role==='Владелец'?'Владелец':(u.privilege_name||roleCfg(u.privilege||'').name||role);
+    const dl=u.department_name||deptCfg(u.department||'Без отдела').name||u.department||'Без отдела';
+    return `<div class="urow"><div class="umain"><img class="uavatar" src="${esc(u.avatar_url||'')}" onerror="this.style.visibility='hidden'"><div class="uname"><b>${esc(u.display_name)}</b><small>Steam профиль</small></div></div><div class="field"><small>Привилегия</small><b class="role-glow" style="color:${esc(rc)};text-shadow:0 0 7px ${esc(rc)},0 0 18px ${esc(rc)}">${esc(rl)}</b></div><div class="field"><small>Отдел</small><b class="dept-glow" style="color:${esc(dc)};text-shadow:0 0 7px ${esc(dc)},0 0 18px ${esc(dc)}">${esc(dl)}</b></div><div class="sid"><small>SteamID64</small><b>${esc(u.steam_id)}</b><div class="actions">${u.can_edit?`<button class="btn edit" data-id="${esc(u.steam_id)}">Изменить</button><button class="btn delete" data-id="${esc(u.steam_id)}">Удалить</button>`:'<span class="no">Нет прав</span>'}</div></div></div>`;
+  }).join('');
+  w.querySelectorAll('.edit').forEach(b=>b.onclick=()=>{const u=users.find(item=>item.steam_id===b.dataset.id);if(u){document.getElementById('steam_id').value=u.steam_id;if(departmentSelect)departmentSelect.set(u.department||'Без отдела');if(privilegeSelect)privilegeSelect.set(u.privilege||'');document.getElementById('grant').scrollIntoView({behavior:'smooth'});}});
+  w.querySelectorAll('.delete').forEach(b=>b.onclick=()=>del(b.dataset.id));
+}
+async function loadUsers(){try{const d=await api('/api/users');users=d.users||[];settings.roles=d.roles||settings.roles;settings.departments=d.departments||settings.departments;renderSelects();renderUsers();}catch(e){setStatus(e.message,true);}}
+async function del(id){const u=users.find(item=>item.steam_id===id);if(!confirm('Удалить '+(u?.display_name||id)+'? Запись SteamID64 будет полностью удалена.'))return;try{await api('/api/users/'+encodeURIComponent(id),{method:'DELETE'});await loadUsers();if(me?.is_owner)await loadLogs();setStatus('Пользователь удалён');}catch(e){setStatus(e.message,true);}}
+async function loadLogs(){const box=document.getElementById('logs');try{const d=await api('/api/logs');const t=document.getElementById('logs-body');t.innerHTML=(d.logs||[]).map(l=>`<tr><td>${esc(new Date(Number(l.created_at)*1000).toLocaleString('ru-RU'))}</td><td>${esc(l.actor_steam_id)}</td><td>${esc(l.target_steam_id)}</td><td>${esc(l.action==='GRANT_ROLE'?'Выдал роль':l.action==='REMOVE_ROLE'?'Удалил роль':l.action==='DEPARTMENT'?'Изменил отдел':l.action==='ROLE_CONFIG'?'Изменил настройки роли':l.action==='DEPARTMENT_CONFIG'?'Изменил настройки отдела':l.action)}</td><td>${esc(l.old_value||'—')}</td><td>${esc(l.new_value||'—')}</td></tr>`).join('');box.style.display='block';}catch(e){box.style.display='none';}}
+async function loadSettings(){const d=await api('/api/role-settings');settings={roles:d.roles||{},departments:d.departments||{}};renderSelects();renderHierarchy();}
+async function preview(){const id=document.getElementById('steam_id').value.trim();if(!/^\d{17}$/.test(id))return;try{const d=await api('/api/steam-profile/'+id);const p=document.getElementById('preview');p.style.display='flex';document.getElementById('preview-avatar').src=d.avatar_url||'';document.getElementById('preview-name').textContent=d.display_name||('SteamID '+id);document.getElementById('preview-id').textContent='SteamID64: '+id;}catch(e){}}
+function showManager(){
+  if(!me || !me.can_manage){return false;}
+  document.querySelectorAll('.management').forEach(el=>el.style.display='block');
+  const myRole=document.getElementById('my-role'); const myId=document.getElementById('my-id');
+  if(myRole){myRole.textContent=me.effective_privilege||me.privilege||'Владелец';myRole.style.color=me.is_owner?'#ff1836':(roleCfg(me.privilege||'').color||'#fff');}
+  if(myId)myId.textContent=me.steam_id||'';
+  renderHierarchy();renderSelects();loadUsers();if(me.is_owner)loadLogs();
+  return true;
+}
+function openManagement(){if(!showManager())return;history.replaceState(null,'',location.pathname);document.getElementById('management').scrollIntoView({behavior:'smooth',block:'start'});}
+document.addEventListener('click',e=>{if(!e.target.closest('.pretty-select'))closeSelects(null);});
+let loadingFallback=setTimeout(()=>{const el=document.getElementById('loading-screen');if(el&&!el.classList.contains('hidden')){const box=el.querySelector('.loading-box');if(box)box.innerHTML='<div class="loading-spinner"></div><b>Загрузка страницы</b><span>Подождите пожалуйста!</span>'; }},12000);
+document.addEventListener('DOMContentLoaded',async()=>{
+  document.getElementById('steam_id')?.addEventListener('blur',preview);
+  document.getElementById('user-form')?.addEventListener('submit',async e=>{e.preventDefault();try{const id=document.getElementById('steam_id').value.trim(),department=document.getElementById('department').value,privilege=document.getElementById('privilege').value||null;if(!/^\d{17}$/.test(id))throw Error('SteamID64 должен содержать 17 цифр');await api('/api/users',{method:'POST',body:JSON.stringify({steam_id:id,department,privilege})});await loadUsers();if(me?.is_owner)await loadLogs();setStatus('Сохранено');preview();}catch(e){setStatus(e.message,true);}});
+  try{const profile=await window.CheckSteamAuth.loadMe();if(profile){me=profile;if(me.can_manage){await loadSettings();showManager();}else{setStatus('Недостаточно прав',true);}}else{setStatus('Требуется авторизация',true);}}catch(e){setStatus(e.message,true);}finally{hideLoading();}
+});
+window.addEventListener('checksteam-auth-ready',async e=>{if(e.detail){me=e.detail;if(me.can_manage){try{await loadSettings();showManager();}catch(err){setStatus(err.message,true);}}else{setStatus('Недостаточно прав',true);}hideLoading();}});
+})();
+</script>
+</body></html>
